@@ -1,4 +1,4 @@
-package com.dts.myapplication
+package com.dts.circle_game
 
 import android.annotation.SuppressLint
 import android.content.Context

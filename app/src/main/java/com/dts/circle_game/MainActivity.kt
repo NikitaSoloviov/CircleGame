@@ -1,9 +1,9 @@
-package com.dts.myapplication
+package com.dts.circle_game
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
-import com.dts.myapplication.databinding.ActivityMainBinding
+import com.dts.circle_game.databinding.ActivityMainBinding
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {

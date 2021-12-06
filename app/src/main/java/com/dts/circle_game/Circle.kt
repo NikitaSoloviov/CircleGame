@@ -1,4 +1,4 @@
-package com.dts.myapplication
+package com.dts.circle_game
 
 data class Circle(
     val x: Float,

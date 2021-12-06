@@ -1,4 +1,4 @@
-package com.dts.myapplication
+package com.dts.circle_game
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

@@ -58,7 +58,7 @@
         app:layout_constraintStart_toEndOf="@+id/tvCount"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
-    <com.dts.myapplication.CircleDrawerView
+    <com.dts.circle_game.CircleDrawerView
         android:id="@+id/circleDrawer"
         android:layout_width="0dp"
         android:layout_height="0dp"
