@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Start"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,7 +54,7 @@
         android:stepSize="1"
         android:valueFrom="1"
         android:valueTo="10"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvCount"
         app:layout_constraintTop_toBottomOf="@+id/btnStart" />
@@ -67,5 +68,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCount" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="@string/enter_user_name"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toEndOf="@+id/tvCount"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+    <Button
+        android:id="@+id/btnScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Scores"
+        app:layout_constraintStart_toStartOf="@+id/tvCount"
+        app:layout_constraintTop_toTopOf="@+id/btnStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
