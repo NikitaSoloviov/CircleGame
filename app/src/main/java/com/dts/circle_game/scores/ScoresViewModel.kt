@@ -3,7 +3,8 @@ package com.dts.circle_game.scores
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dts.circle_game.scores.model.Score
+import com.dts.circle_game.model.Score
+
 
 class ScoresViewModel : ViewModel() {
 
@@ -13,11 +14,10 @@ class ScoresViewModel : ViewModel() {
 
     fun putTestData() {
         val data = mutableListOf<Score>()
-        data.add(Score(1, 20, "User"))
-        data.add(Score(2, 20, "User`"))
-        data.add(Score(3, 20, "User1"))
-        data.add(Score(4, 20, "User2"))
-        data.add(Score(5, 20, "User3"))
+        data.add(Score("user", 20, 1))
+        data.add(Score("user", 20, 1))
+        data.add(Score("user", 20, 1))
+
 
         itemsLiveData.postValue(data)
     }

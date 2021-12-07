@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dts.circle_game.R
-import com.dts.circle_game.scores.model.Score
+import com.dts.circle_game.model.Score
 import com.dts.circle_game.scores.view_holder.ViewHolder
 
 class ScoresAdapter : RecyclerView.Adapter<ViewHolder>() {

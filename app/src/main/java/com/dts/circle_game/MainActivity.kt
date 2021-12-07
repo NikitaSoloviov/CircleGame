@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.dts.circle_game.scores.ScoresActivity
 import com.dts.circle_game.databinding.ActivityMainBinding
+import com.dts.circle_game.repository.FireDatabase
+import com.dts.circle_game.repository.ScoreRepository
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,9 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityMainBinding
+
+    private val scoreRepository by lazy { ScoreRepository(FireDatabase()) }
+
     private var counterSuccess = 0
     private var counterTotal = 0
 
@@ -29,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupListener()
-
     }
 
     private fun setupListener() {
@@ -59,6 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun beginTimer() {
+        val username = binding.etUserName.text.toString()
         timer?.cancel()
         timer = object : CountDownTimer(TIMER_TIME_DURATION, TIMER_STEP_DURATION) {
 
@@ -70,6 +75,11 @@ class MainActivity : AppCompatActivity() {
                 binding.btnStart.isEnabled = true
                 binding.circleDrawer.isCanDraw = false
                 binding.circleDrawer.invalidate()
+                scoreRepository.saveScore(
+                    username,
+                    counterSuccess,
+                    TIMER_TIME_DURATION.millisToSeconds
+                )
                 binding.root.snackbar(
                     resources.getString(
                         R.string.finish_game_format,

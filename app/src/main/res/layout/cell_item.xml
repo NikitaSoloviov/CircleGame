@@ -42,4 +42,5 @@
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/tvScore"
         app:layout_constraintTop_toTopOf="@+id/tvScore" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
