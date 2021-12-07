@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Start"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -72,15 +73,25 @@
         android:id="@+id/etUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:hint="@string/placeholder_enter_username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/circleDrawer"
+        android:gravity="center"
+        android:maxLength="32"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toEndOf="@+id/tvCount"
-        app:layout_constraintTop_toBottomOf="@+id/btnStart"
-        tools:text="User name" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+
+    <Button
+        android:id="@+id/btnScores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Scores"
+        app:layout_constraintStart_toStartOf="@+id/tvCount"
+        app:layout_constraintTop_toTopOf="@+id/btnStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

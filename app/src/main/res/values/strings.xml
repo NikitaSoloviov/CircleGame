@@ -2,5 +2,5 @@
     <string name="app_name">My Application</string>
     <string name="label_score_format">Score: %d/%d</string>
     <string name="finish_game_format">Completed levels: %d</string>
-    <string name="placeholder_enter_username">Please enter username before start</string>
+    <string name="placeholder_enter_username">Please enter username</string>
 </resources>
