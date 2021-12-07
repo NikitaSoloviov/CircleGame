@@ -69,7 +69,7 @@ class CircleDrawerView(context: Context, attrs: AttributeSet) : View(context, at
                     false
                 }
             } else {
-                false
+                true
             }
         }
     }
