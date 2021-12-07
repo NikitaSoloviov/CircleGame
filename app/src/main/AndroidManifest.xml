@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dts.circle_game">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,14 +14,20 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name="com.dts.circle_game.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".scores.ScoresActivity" />
+        <activity
+            android:name=".scores.ScoresActivity"
+            android:label="@string/title_scores"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>

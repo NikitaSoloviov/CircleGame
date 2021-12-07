@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import kotlin.random.Random
 
@@ -37,7 +38,7 @@ class CircleDrawerView(context: Context, attrs: AttributeSet) : View(context, at
         paintStroke.style = Paint.Style.STROKE
         paintStroke.color = Color.GRAY
         paintStroke.strokeWidth = 10f
-        setupListeners(listOfCircles)
+        setupListeners()
     }
 
     @SuppressLint("DrawAllocation")
@@ -50,19 +51,23 @@ class CircleDrawerView(context: Context, attrs: AttributeSet) : View(context, at
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun setupListeners(list: List<Circle>) {
+    private fun setupListeners() {
         setOnTouchListener { _, event ->
-            val x = event.x
-            val y = event.y
-            val result = list.firstOrNull { (x - it.x).pow(2)+ (y - it.y).pow(2) <= radius.pow(2)}
-            Timber.d("x= $x, y= $y | ${event.rawX} - ${event.rawY}")
-            if (result != null) {
-                Timber.d("is inside")
-                listOfCircles.remove(result)
-                if (listOfCircles.isEmpty()) onCompleteLevel?.invoke()
-                postInvalidate()
+            if (event.action == MotionEvent.ACTION_UP) {
+                val x = event.x
+                val y = event.y
+                val result = listOfCircles.firstOrNull { (x - it.x).pow(2)+ (y - it.y).pow(2) <= radius.pow(2)}
+                Timber.d("x= $x, y= $y | ${event.rawX} - ${event.rawY}")
+                if (result != null) {
+                    Timber.d("is inside")
+                    listOfCircles.remove(result)
+                    if (listOfCircles.isEmpty()) onCompleteLevel?.invoke()
+                    postInvalidate()
 
-                true
+                    true
+                } else {
+                    false
+                }
             } else {
                 false
             }

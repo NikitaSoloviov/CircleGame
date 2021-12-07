@@ -13,3 +13,5 @@ fun View.snackbar(text: String) {
 
 val Long.millisToSeconds: Int
     get() = this.toInt()/1000
+
+fun String?.isReadyUserName() = (this?.length ?: 0) >= 3

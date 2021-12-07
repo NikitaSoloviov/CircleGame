@@ -18,13 +18,17 @@ class MainActivity : AppCompatActivity() {
         private const val TIMER_STEP_DURATION = 1000L
     }
 
-
     private lateinit var binding: ActivityMainBinding
 
     private val scoreRepository by lazy { ScoreRepository(FireDatabase()) }
 
     private var counterSuccess = 0
     private var counterTotal = 0
+    private var gameState: GameState = GameState.NONE
+        set(value) {
+            field = value
+            updateUI()
+        }
 
     private var timer: CountDownTimer? = null
 
@@ -34,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupListener()
+
+        gameState = GameState.INITIAL
     }
 
     private fun setupListener() {
@@ -48,17 +54,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnStart.setOnClickListener {
-            counterSuccess = 0
-            counterTotal = 0
-            binding.tvCount.text = "0"
-            binding.circleDrawer.isCanDraw = true
-            binding.circleDrawer.invalidate()
-            it.isEnabled = false
-            beginTimer()
+            gameState = GameState.STARTED
         }
 
         binding.etUserName.addTextChangedListener {
-            binding.btnStart.isEnabled = it?.length!! >= 3
+            gameState = if (it.toString().isReadyUserName()) GameState.READY
+            else GameState.INITIAL
         }
     }
 
@@ -72,9 +73,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                binding.btnStart.isEnabled = true
-                binding.circleDrawer.isCanDraw = false
-                binding.circleDrawer.invalidate()
                 scoreRepository.saveScore(
                     username,
                     counterSuccess,
@@ -86,8 +84,36 @@ class MainActivity : AppCompatActivity() {
                         counterSuccess
                     )
                 )
+                gameState = GameState.INITIAL
             }
         }
         timer?.start()
+    }
+
+    private fun updateUI() {
+        when (gameState) {
+            GameState.NONE -> Timber.d("Activity is initialized!")
+            GameState.INITIAL -> {
+                counterSuccess = 0
+                counterTotal = 0
+                binding.tvCount.text = "0"
+                binding.etUserName.isEnabled = true
+                binding.circleDrawer.isCanDraw = false
+                binding.circleDrawer.invalidate()
+                binding.btnScores.isEnabled = true
+                binding.btnStart.isEnabled = binding.etUserName.text.toString().isReadyUserName()
+            }
+            GameState.READY -> {
+                binding.btnStart.isEnabled = true
+            }
+            GameState.STARTED -> {
+                binding.etUserName.isEnabled = false
+                binding.circleDrawer.isCanDraw = true
+                binding.circleDrawer.invalidate()
+                binding.btnScores.isEnabled = false
+                binding.btnStart.isEnabled = false
+                beginTimer()
+            }
+        }
     }
 }

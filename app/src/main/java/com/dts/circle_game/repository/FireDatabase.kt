@@ -20,10 +20,9 @@ class FireDatabase : ScoreDataSource {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val resultList = mutableListOf<Score>()
                 snapshot.children.forEach { child ->
-                    val score = child.getValue<Score>()
-                    if (score != null) {
+                    child.getValue<Score>()?.let { score ->
                         resultList.add(score)
-                    }
+                    } ?: Timber.w("Received null score item $child")
                 }
                 onComplete(resultList)
             }
