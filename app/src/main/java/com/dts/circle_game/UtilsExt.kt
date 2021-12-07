@@ -10,3 +10,6 @@ val Long.secondsStr: String
 fun View.snackbar(text: String) {
     Snackbar.make(this, text, Snackbar.LENGTH_LONG).show()
 }
+
+val Long.millisToSeconds: Int
+    get() = this.toInt()/1000
