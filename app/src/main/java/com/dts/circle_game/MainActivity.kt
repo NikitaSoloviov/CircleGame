@@ -14,7 +14,7 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        private const val TIMER_TIME_DURATION = 30_000L
+        private const val TIMER_TIME_DURATION = 5_000L
         private const val TIMER_STEP_DURATION = 1000L
     }
 

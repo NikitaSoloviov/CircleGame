@@ -3,6 +3,7 @@ package com.dts.circle_game.scores
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.dts.circle_game.databinding.ActivityScoresBinding
 import com.dts.circle_game.scores.adapter.ScoresAdapter
 
@@ -22,6 +23,10 @@ class ScoresActivity : AppCompatActivity() {
         setupAdapter()
         setupObservers()
         viewModel.fetch()
+        binding.rvScores.apply {
+            setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
+        }
     }
 
     private fun setupAdapter() {

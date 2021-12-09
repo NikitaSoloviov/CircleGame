@@ -5,4 +5,6 @@
     <string name="placeholder_enter_username">Please enter username</string>
     <string name="label_score_action">Scores</string>
     <string name="title_scores">Best Score Table</string>
+    <string name="user_name">User Name</string>
+    <string name="points">points</string>
 </resources>
