@@ -42,7 +42,7 @@
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:singleLine="true"
-        android:text="@string/user_name"
+        android:text="@string/label_user_name"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/tvPlace"

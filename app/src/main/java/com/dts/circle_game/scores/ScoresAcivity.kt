@@ -23,10 +23,7 @@ class ScoresActivity : AppCompatActivity() {
         setupAdapter()
         setupObservers()
         viewModel.fetch()
-        binding.rvScores.apply {
-            setHasFixedSize(true)
-            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
-        }
+        setupRecyclerViewDecoration()
     }
 
     private fun setupAdapter() {
@@ -36,6 +33,13 @@ class ScoresActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.onScoresUpdate().observe(this) { scores ->
             adapter.items = scores
+        }
+    }
+
+    private fun setupRecyclerViewDecoration(){
+        binding.rvScores.apply {
+            setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
     }
 }
