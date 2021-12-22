@@ -56,7 +56,9 @@ class CircleDrawerView(context: Context, attrs: AttributeSet) : View(context, at
             if (event.action == MotionEvent.ACTION_UP) {
                 val x = event.x
                 val y = event.y
-                val result = listOfCircles.firstOrNull { (x - it.x).pow(2)+ (y - it.y).pow(2) <= radius.pow(2)}
+                val result = listOfCircles.firstOrNull {
+                    (x - it.x).pow(2) + (y - it.y).pow(2) <= radius.pow(2)
+                }
                 Timber.d("x= $x, y= $y | ${event.rawX} - ${event.rawY}")
                 if (result != null) {
                     Timber.d("is inside")
